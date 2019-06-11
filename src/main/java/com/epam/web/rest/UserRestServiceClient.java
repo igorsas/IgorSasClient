@@ -22,7 +22,7 @@ public class UserRestServiceClient implements UserService {
 
     public Logger LOGGER = LogManager.getLogger(UserRestServiceClient.class);
 
-    public static final String BASE_ADDRESS = "http://localhost:8080/IgorSasService/rest/";
+    public static final String BASE_ADDRESS = "http://localhost:8080/IgorSasService/rest";
 
     private ClientConfig clientConfig;
     private Client client;
@@ -121,7 +121,7 @@ public class UserRestServiceClient implements UserService {
         LOGGER.info("add new user");
 
         ObjectMapper mapper = new ObjectMapper();
-        String uri = BASE_ADDRESS + "/user";
+        String uri = BASE_ADDRESS + "/user/add";
         LOGGER.info("path:" + uri);
 
         WebResource webResource = client.resource(uri);
@@ -188,7 +188,6 @@ public class UserRestServiceClient implements UserService {
     }
 
     private ServiceException buildException(ClientResponse response, ObjectMapper mapper) throws ServiceException {
-        LOGGER.info("getAuthorBooks");
         String jsonFaultInfo = response.getEntity(String.class);
 
         UserFault faultInfo = null;
@@ -197,7 +196,7 @@ public class UserRestServiceClient implements UserService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ServiceException(faultInfo);
+        return new ServiceException(faultInfo.getMessage());
 
     }
 
