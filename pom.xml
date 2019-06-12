@@ -133,7 +133,7 @@
                             <sourceRoot>src/main/java</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>src/main/resources/service.wsdl</wsdl>
+                                    <wsdl>http://localhost:8080/IgorSasService/userSOAP?wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-impl</extraarg>
                                         <extraarg>-verbose</extraarg>
