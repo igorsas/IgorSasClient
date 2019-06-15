@@ -1,16 +1,19 @@
 package com.epam.web;
 
+import com.epam.web.listener.LoggerListener;
 import com.epam.web.soap.LoginModel;
 import com.epam.web.soap.Role;
 import com.epam.web.soap.ServiceException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
+@Listeners({LoggerListener.class})
 public class LogInTest {
     private Logger LOGGER = LogManager.getLogger(LogInTest.class);
 

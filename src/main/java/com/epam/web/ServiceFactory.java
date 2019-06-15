@@ -2,8 +2,8 @@ package com.epam.web;
 
 import com.epam.web.rest.UserRestServiceClient;
 import com.epam.web.soap.UserServiceImplService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class ServiceFactory {
     private static Logger LOGGER = LogManager.getLogger(ServiceFactory.class);
