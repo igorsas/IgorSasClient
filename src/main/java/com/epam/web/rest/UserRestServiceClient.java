@@ -121,27 +121,13 @@ public class UserRestServiceClient implements UserService {
 
         ObjectMapper mapper = new ObjectMapper();
         String url = BASE_ADDRESS + "/user/add";
-        LOGGER.info("path:" + url);
-
-        WebResource webResource = client.resource(url);
-
-        ClientResponse response = null;
         try {
-            response = webResource.accept("application/json;encoding=UTF-8").type("application/json")
-                    .post(ClientResponse.class, mapper.writeValueAsString(user));
+            return postMethod(mapper, url, mapper.writeValueAsString(user));
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
         }
-
-        if (!Objects.isNull(response)) {
-            if (response.getStatus() != 200) {
-                throw getException(response, mapper);
-            }
-        } else {
-            return false;
-        }
-        return true;
+        return false;
     }
 
     public boolean removeUser(User user) throws ServiceException {
@@ -159,6 +145,7 @@ public class UserRestServiceClient implements UserService {
             response = webResource.accept("application/json;encoding=UTF-8").type("application/json")
                     .delete(ClientResponse.class, mapper.writeValueAsString(user));
         } catch (IOException e) {
+            LOGGER.error(e.getMessage());
             e.printStackTrace();
         }
 
@@ -177,17 +164,23 @@ public class UserRestServiceClient implements UserService {
 
         ObjectMapper mapper = new ObjectMapper();
         String uri = BASE_ADDRESS + "/login";
+        try {
+            return postMethod(mapper, uri, mapper.writeValueAsString(loginModel));
+        } catch (IOException e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private boolean postMethod(ObjectMapper mapper, String uri, String s) throws ServiceException {
         LOGGER.info("path:" + uri);
 
         WebResource webResource = client.resource(uri);
 
-        ClientResponse response = null;
-        try {
-            response = webResource.accept("application/json;encoding=UTF-8").type("application/json")
-                    .post(ClientResponse.class, mapper.writeValueAsString(loginModel));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ClientResponse response = webResource
+                .accept("application/json;encoding=UTF-8").type("application/json")
+                .post(ClientResponse.class, s);
 
         if (!Objects.isNull(response)) {
             if (response.getStatus() != 200) {
