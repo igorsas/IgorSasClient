@@ -57,4 +57,24 @@ public class Role {
         this.name = value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Role)) return false;
+
+        Role role = (Role) o;
+
+        return getName() != null ? getName().equals(role.getName()) : role.getName() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getName() != null ? getName().hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" + "name='" + name + '\'' +
+                '}';
+    }
 }

@@ -147,4 +147,32 @@ public class User {
         this.username = value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
+            return false;
+        if (getRole() != null ? !getRole().equals(user.getRole()) : user.getRole() != null) return false;
+        return getUsername() != null ? getUsername().equals(user.getUsername()) : user.getUsername() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getPassword() != null ? getPassword().hashCode() : 0;
+        result = 31 * result + (getRole() != null ? getRole().hashCode() : 0);
+        result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "password='" + password + '\'' +
+                ", roles=" + roles +
+                ", username='" + username + '\'' +
+                '}';
+    }
 }

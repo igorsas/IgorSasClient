@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class UpdateUsersTest {
-    private Logger LOGGER = LogManager.getLogger(LogInTest.class);
+    private Logger LOGGER = LogManager.getLogger(UpdateUsersTest.class);
 
     @DataProvider
     private Object[] typeService(){
@@ -44,7 +44,9 @@ public class UpdateUsersTest {
         user.setRole(role);
         Assert.assertTrue(service.addUser(user), "adding new user");
         LOGGER.info("get all users by " + typeService);
+        LOGGER.debug("User: " + user);
         List<User> users = service.getAllUsers();
+        LOGGER.debug("All users: " + users);
         Assert.assertTrue(users.contains(user));
     }
 
@@ -67,10 +69,15 @@ public class UpdateUsersTest {
         UserService service = ServiceFactory.getUserService(typeService);
         LOGGER.info("get all users by " + typeService);
         List<User> users = service.getAllUsers();
-        User user = users.get(users.size()-1);
-        Assert.assertTrue(service.removeUser(user), "removing user " + user);
+        User userFromService = users.get(users.size()-1);
+        //we need delete user without non-null field roles, because of in csv file we haven't got that one field
+        User correctedForRemovingUser = new User();
+        correctedForRemovingUser.setUsername(userFromService.getUsername());
+        correctedForRemovingUser.setPassword(userFromService.getPassword());
+        correctedForRemovingUser.setRole(userFromService.getRole());
+        Assert.assertTrue(service.removeUser(correctedForRemovingUser), "removing user " + correctedForRemovingUser);
         LOGGER.info("get all users by " + typeService);
         users = service.getAllUsers();
-        Assert.assertFalse(users.contains(user));
+        Assert.assertFalse(users.contains(correctedForRemovingUser));
     }
 }
