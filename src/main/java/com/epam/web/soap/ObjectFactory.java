@@ -46,6 +46,94 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Role }
+     * 
+     */
+    public Role createRole() {
+        return new Role();
+    }
+
+    /**
+     * Create an instance of {@link AddUser }
+     * 
+     */
+    public AddUser createAddUser() {
+        return new AddUser();
+    }
+
+    /**
+     * Create an instance of {@link RemoveUserResponse }
+     * 
+     */
+    public RemoveUserResponse createRemoveUserResponse() {
+        return new RemoveUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemoveUser }
+     * 
+     */
+    public RemoveUser createRemoveUser() {
+        return new RemoveUser();
+    }
+
+    /**
+     * Create an instance of {@link GetAllUsersResponse }
+     * 
+     */
+    public GetAllUsersResponse createGetAllUsersResponse() {
+        return new GetAllUsersResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetRolesResponse }
+     * 
+     */
+    public GetRolesResponse createGetRolesResponse() {
+        return new GetRolesResponse();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link LogIn }
+     * 
+     */
+    public LogIn createLogIn() {
+        return new LogIn();
+    }
+
+    /**
+     * Create an instance of {@link GetUsersByRoleResponse }
+     * 
+     */
+    public GetUsersByRoleResponse createGetUsersByRoleResponse() {
+        return new GetUsersByRoleResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllUsers }
+     * 
+     */
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
+    }
+
+    /**
+     * Create an instance of {@link GetUsersByRole }
+     * 
+     */
+    public GetUsersByRole createGetUsersByRole() {
+        return new GetUsersByRole();
+    }
+
+    /**
      * Create an instance of {@link LoginModel }
      * 
      */
@@ -62,94 +150,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link User }
-     * 
-     */
-    public User createUser() {
-        return new User();
-    }
-
-    /**
-     * Create an instance of {@link RemoveUser }
-     * 
-     */
-    public RemoveUser createRemoveUser() {
-        return new RemoveUser();
-    }
-
-    /**
-     * Create an instance of {@link Role }
-     * 
-     */
-    public Role createRole() {
-        return new Role();
-    }
-
-    /**
-     * Create an instance of {@link GetUsersByRoleResponse }
-     * 
-     */
-    public GetUsersByRoleResponse createGetUsersByRoleResponse() {
-        return new GetUsersByRoleResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetRolesResponse }
-     * 
-     */
-    public GetRolesResponse createGetRolesResponse() {
-        return new GetRolesResponse();
-    }
-
-    /**
-     * Create an instance of {@link LogInResponse }
-     * 
-     */
-    public LogInResponse createLogInResponse() {
-        return new LogInResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetUsersByRole }
-     * 
-     */
-    public GetUsersByRole createGetUsersByRole() {
-        return new GetUsersByRole();
-    }
-
-    /**
-     * Create an instance of {@link GetAllUsersResponse }
-     * 
-     */
-    public GetAllUsersResponse createGetAllUsersResponse() {
-        return new GetAllUsersResponse();
-    }
-
-    /**
-     * Create an instance of {@link LogIn }
-     * 
-     */
-    public LogIn createLogIn() {
-        return new LogIn();
-    }
-
-    /**
-     * Create an instance of {@link RemoveUserResponse }
-     * 
-     */
-    public RemoveUserResponse createRemoveUserResponse() {
-        return new RemoveUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddUser }
-     * 
-     */
-    public AddUser createAddUser() {
-        return new AddUser();
-    }
-
-    /**
      * Create an instance of {@link UserFault }
      * 
      */
@@ -158,11 +158,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAllUsers }
+     * Create an instance of {@link LogInResponse }
      * 
      */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
+    public LogInResponse createLogInResponse() {
+        return new LogInResponse();
     }
 
     /**

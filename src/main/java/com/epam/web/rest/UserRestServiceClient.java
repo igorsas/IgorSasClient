@@ -59,7 +59,7 @@ public class UserRestServiceClient implements UserService {
         LOGGER.info("get Roles for user rest");
 
         ObjectMapper mapper = new ObjectMapper();
-        String url = BASE_ADDRESS + "/role";
+        String url = BASE_ADDRESS + "/roles";
         LOGGER.info("path:" + url);
 
         WebResource webResource = client.resource(url);
@@ -116,7 +116,7 @@ public class UserRestServiceClient implements UserService {
         return list;
     }
 
-    public boolean addUser(User user) {
+    public boolean addUser(User user) throws ServiceException {
         LOGGER.info("add new user by rest");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -134,10 +134,17 @@ public class UserRestServiceClient implements UserService {
             e.printStackTrace();
         }
 
-        return (!Objects.isNull(response) ? response.getStatus() : 0) == 200;
+        if (!Objects.isNull(response)) {
+            if (response.getStatus() != 200) {
+                throw getException(response, mapper);
+            }
+        } else {
+            return false;
+        }
+        return true;
     }
 
-    public boolean removeUser(User user) {
+    public boolean removeUser(User user) throws ServiceException {
         LOGGER.info("remove User by rest");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -155,10 +162,17 @@ public class UserRestServiceClient implements UserService {
             e.printStackTrace();
         }
 
-        return (!Objects.isNull(response) ? response.getStatus() : 0) == 200;
+        if (!Objects.isNull(response)) {
+            if (response.getStatus() != 200) {
+                throw getException(response, mapper);
+            }
+        } else {
+            return false;
+        }
+        return true;
     }
 
-    public boolean logIn(LoginModel loginModel) {
+    public boolean logIn(LoginModel loginModel) throws ServiceException {
         LOGGER.info("logging in user by rest");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -175,7 +189,14 @@ public class UserRestServiceClient implements UserService {
             e.printStackTrace();
         }
 
-        return (!Objects.isNull(response) ? response.getStatus() : 0) == 200;
+        if (!Objects.isNull(response)) {
+            if (response.getStatus() != 200) {
+                throw getException(response, mapper);
+            }
+        } else {
+            return false;
+        }
+        return true;
     }
 
     private ServiceException getException(ClientResponse response, ObjectMapper mapper) {
