@@ -56,8 +56,10 @@
                 <version>2.7.7</version>
                 <executions>
                     <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
+<!--                        <id>generate-sources</id>-->
+<!--                        <phase>generate-sources</phase>-->
+                        <id>install</id>
+                        <phase>install</phase>
                         <configuration>
                             <sourceRoot>src/main/java</sourceRoot>
                             <wsdlOptions>

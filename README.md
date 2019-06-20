@@ -1,2 +1,2 @@
 # IgorSasClient
-For using soap client run in terminal command: "mvn generate-sources"
+For running tests write in terminal "mvn test"
