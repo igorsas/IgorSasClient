@@ -18,7 +18,7 @@ public class UpdateUsersTest extends BaseTest {
     private Logger LOGGER = LogManager.getLogger(UpdateUsersTest.class);
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
-    public void addUserWhichAlreadyExistTest(String typeService) throws ServiceException {
+    public void addUserWhichAlreadyExistTest(Service typeService) throws ServiceException {
         LOGGER.info("adding user which already exist test");
         UserService service = ServiceFactory.getUserService(typeService);
         User user = new User();
@@ -31,7 +31,7 @@ public class UpdateUsersTest extends BaseTest {
     }
 
     @Test(dataProvider = "typeService")
-    public void addNewUserTest(String typeService) throws ServiceException {
+    public void addNewUserTest(Service typeService) throws ServiceException {
         LOGGER.info("adding user which already exist test");
         UserService service = ServiceFactory.getUserService(typeService);
         User user = new User();
@@ -48,7 +48,7 @@ public class UpdateUsersTest extends BaseTest {
     }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
-    public void deleteUserWhichIsNotExist(String typeService) throws ServiceException {
+    public void deleteUserWhichIsNotExist(Service typeService) throws ServiceException {
         LOGGER.info("deleting user which isn't exist in system " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         User user = JsonParser.getInvalidUser();
@@ -56,7 +56,7 @@ public class UpdateUsersTest extends BaseTest {
     }
 
     @Test(dataProvider = "typeService")
-    public void deleteUserTest(String typeService) throws ServiceException {
+    public void deleteUserTest(Service typeService) throws ServiceException {
         LOGGER.info("deleting user test");
         UserService service = ServiceFactory.getUserService(typeService);
         LOGGER.info("get all users by " + typeService);

@@ -7,17 +7,16 @@ import org.apache.log4j.Logger;
 
 public class ServiceFactory {
     private static Logger LOGGER = LogManager.getLogger(ServiceFactory.class);
-    public static final String REST = "REST";
-    public static final String SOAP = "SOAP";
 
-    public static UserService getUserService(String choice) {
+
+    public static UserService getUserService(Service choice) {
         LOGGER.info("getUserService factory method");
 
         UserService service;
-        if (choice.equals(REST)) {
+        if (choice.equals(Service.REST)) {
             LOGGER.info("Creating Rest user service client");
             service = new UserRestServiceClient();
-        } else if (choice.equals(SOAP)) {
+        } else if (choice.equals(Service.SOAP)) {
             LOGGER.info("Creating Soap user service client");
             service = new UserServiceImplService().getUserServiceImplPort();
         } else {
@@ -26,5 +25,4 @@ public class ServiceFactory {
         }
         return service;
     }
-
 }

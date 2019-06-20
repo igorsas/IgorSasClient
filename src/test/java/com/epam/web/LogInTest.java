@@ -19,7 +19,7 @@ public class LogInTest extends BaseTest{
     private Logger LOGGER = LogManager.getLogger(LogInTest.class);
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
-    public void incorrectLogInTest(String typeService) throws ServiceException {
+    public void incorrectLogInTest(Service typeService) throws ServiceException {
         LOGGER.info("logging in by incorrect credentials " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         LoginModel loginModel = new LoginModel();
@@ -30,7 +30,7 @@ public class LogInTest extends BaseTest{
     }
 
     @Test(dataProvider = "typeService")
-    public void logInTest(String typeService) throws ServiceException {
+    public void logInTest(Service typeService) throws ServiceException {
         LOGGER.info("logging in by correct credentials " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         LoginModel loginModel = new LoginModel();

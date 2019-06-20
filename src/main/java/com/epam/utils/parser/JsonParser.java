@@ -4,7 +4,6 @@ import com.epam.web.soap.Role;
 import com.epam.web.soap.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

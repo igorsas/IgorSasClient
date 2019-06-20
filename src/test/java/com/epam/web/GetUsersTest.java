@@ -17,7 +17,7 @@ public class GetUsersTest extends BaseTest {
     private Logger LOGGER = LogManager.getLogger(GetUsersTest.class);
 
     @Test(dataProvider = "typeService")
-    public void getAllUsersTest(String typeService){
+    public void getAllUsersTest(Service typeService){
         LOGGER.info("get all users by " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         List<User> users = service.getAllUsers();
@@ -26,14 +26,14 @@ public class GetUsersTest extends BaseTest {
     }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
-    public void getUsersByIncorrectRoleTest(String typeService) throws ServiceException {
+    public void getUsersByIncorrectRoleTest(Service typeService) throws ServiceException {
         LOGGER.info("get users by incorrect role " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         service.getUsersByRole(JsonParser.getInvalidRole().getName());
     }
 
     @Test(dataProvider = "typeService")
-    public void getUsersByRole(String typeService) throws ServiceException {
+    public void getUsersByRole(Service typeService) throws ServiceException {
         LOGGER.info("get users by incorrect role " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         List<User> users = service.getUsersByRole(JsonParser.getValidRole().getName());
