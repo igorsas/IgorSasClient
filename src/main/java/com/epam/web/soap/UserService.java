@@ -16,7 +16,7 @@ import javax.xml.ws.ResponseWrapper;
  */
 @WebService(targetNamespace = "http://soap.web.epam.com/", name = "UserService")
 @XmlSeeAlso({ObjectFactory.class})
-public interface UserService extends com.epam.web.UserService {
+public interface UserService extends com.epam.web.factory.UserService {
 
     @WebMethod
     @RequestWrapper(localName = "logIn", targetNamespace = "http://soap.web.epam.com/", className = "com.epam.web.soap.LogIn")

@@ -1,4 +1,4 @@
-package com.epam.web;
+package com.epam.web.factory;
 
 import com.epam.web.rest.UserRestServiceClient;
 import com.epam.web.soap.UserServiceImplService;

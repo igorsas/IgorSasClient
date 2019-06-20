@@ -1,7 +1,7 @@
 package com.epam.web.rest;
 
 
-import com.epam.web.UserService;
+import com.epam.web.factory.UserService;
 import com.epam.web.soap.*;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;

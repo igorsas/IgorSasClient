@@ -1,6 +1,7 @@
 package com.epam.web;
 
 import com.epam.listener.LoggerListener;
+import com.epam.web.factory.Service;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 

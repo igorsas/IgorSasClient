@@ -1,4 +1,4 @@
-package com.epam.web;
+package com.epam.web.factory;
 
 public enum Service {
     REST,
