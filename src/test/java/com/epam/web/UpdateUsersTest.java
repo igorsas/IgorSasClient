@@ -7,20 +7,14 @@ import com.epam.web.soap.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 @Listeners({LoggerListener.class})
-public class UpdateUsersTest {
+public class UpdateUsersTest extends BaseTest {
     private Logger LOGGER = LogManager.getLogger(UpdateUsersTest.class);
-
-    @DataProvider
-    private Object[] typeService(){
-        return new Object[]{ServiceFactory.REST, ServiceFactory.SOAP};
-    }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
     public void addUserWhichAlreadyExistTest(String typeService) throws ServiceException {

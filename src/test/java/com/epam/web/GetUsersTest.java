@@ -6,20 +6,14 @@ import com.epam.web.soap.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 @Listeners({LoggerListener.class})
-public class GetUsersTest {
+public class GetUsersTest extends BaseTest {
     private Logger LOGGER = LogManager.getLogger(GetUsersTest.class);
-
-    @DataProvider
-    private Object[] typeService(){
-        return new Object[]{ServiceFactory.REST, ServiceFactory.SOAP};
-    }
 
     @Test(dataProvider = "typeService")
     public void getAllUsersTest(String typeService){

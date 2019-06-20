@@ -7,20 +7,14 @@ import com.epam.web.soap.ServiceException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 @Listeners({LoggerListener.class})
-public class LogInTest {
+public class LogInTest extends BaseTest{
     private Logger LOGGER = LogManager.getLogger(LogInTest.class);
-
-    @DataProvider
-    private Object[] typeService(){
-        return new Object[]{ServiceFactory.REST, ServiceFactory.SOAP};
-    }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
     public void incorrectLogInTest(String typeService) throws ServiceException {
