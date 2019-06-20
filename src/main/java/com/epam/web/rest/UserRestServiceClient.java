@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserRestServiceClient implements UserService {
     private static final String BASE_ADDRESS = "http://localhost:8080/IgorSasService/rest";
-    private Logger LOGGER = LogManager.getLogger(UserRestServiceClient.class);
+    private static final Logger LOGGER = LogManager.getLogger(UserRestServiceClient.class);
     private Client client;
     private ObjectMapper mapper;
 

@@ -9,14 +9,12 @@ import com.epam.web.soap.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-@Listeners({LoggerListener.class})
 public class LogInTest extends BaseTest{
-    private Logger LOGGER = LogManager.getLogger(LogInTest.class);
+    private static final Logger LOGGER = LogManager.getLogger(LogInTest.class);
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
     public void incorrectLogInTest(Service typeService) throws ServiceException {

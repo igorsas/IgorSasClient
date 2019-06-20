@@ -1,20 +1,17 @@
 package com.epam.web;
 
-import com.epam.listener.LoggerListener;
 import com.epam.utils.parser.JsonParser;
 import com.epam.web.soap.ServiceException;
 import com.epam.web.soap.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-@Listeners({LoggerListener.class})
 public class GetUsersTest extends BaseTest {
-    private Logger LOGGER = LogManager.getLogger(GetUsersTest.class);
+    private static final Logger LOGGER = LogManager.getLogger(GetUsersTest.class);
 
     @Test(dataProvider = "typeService")
     public void getAllUsersTest(Service typeService){

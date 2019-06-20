@@ -6,7 +6,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 public class ServiceFactory {
-    private static Logger LOGGER = LogManager.getLogger(ServiceFactory.class);
+    private static final Logger LOGGER = LogManager.getLogger(ServiceFactory.class);
 
 
     public static UserService getUserService(Service choice) {
