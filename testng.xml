@@ -10,6 +10,6 @@
     </test>
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter" />
-        <listener class-name="com.epam.web.listener.LoggerListener"/>
+        <listener class-name="com.epam.listener.LoggerListener"/>
     </listeners>
 </suite>

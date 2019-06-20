@@ -1,6 +1,6 @@
 package com.epam.web;
 
-import com.epam.web.listener.LoggerListener;
+import com.epam.listener.LoggerListener;
 import com.epam.web.soap.Role;
 import com.epam.web.soap.ServiceException;
 import com.epam.web.soap.User;

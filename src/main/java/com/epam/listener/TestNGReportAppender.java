@@ -1,4 +1,4 @@
-package com.epam.web.listener;
+package com.epam.listener;
 
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Layout;
