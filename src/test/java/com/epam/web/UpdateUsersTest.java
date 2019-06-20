@@ -1,6 +1,7 @@
 package com.epam.web;
 
 import com.epam.listener.LoggerListener;
+import com.epam.utils.parser.JsonParser;
 import com.epam.web.soap.Role;
 import com.epam.web.soap.ServiceException;
 import com.epam.web.soap.User;
@@ -34,29 +35,23 @@ public class UpdateUsersTest extends BaseTest {
         LOGGER.info("adding user which already exist test");
         UserService service = ServiceFactory.getUserService(typeService);
         User user = new User();
-        Role role = new Role();
-        role.setName("user");
+        Role role = JsonParser.getValidRole();
         user.setUsername(String.valueOf(service.getClass().hashCode()));
         user.setPassword(String.valueOf(service.getClass().hashCode()));
         user.setRole(role);
-        Assert.assertTrue(service.addUser(user), "adding new user");
+        Assert.assertTrue(service.addUser(user), "user was not added to service");
         LOGGER.info("get all users by " + typeService);
         LOGGER.debug("User: " + user);
         List<User> users = service.getAllUsers();
         LOGGER.debug("All users: " + users);
-        Assert.assertTrue(users.contains(user));
+        Assert.assertTrue(users.contains(user), "user isn't exist in system");
     }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
     public void deleteUserWhichIsNotExist(String typeService) throws ServiceException {
         LOGGER.info("deleting user which isn't exist in system " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
-        User user = new User();
-        Role role = new Role();
-        role.setName("user");
-        user.setUsername(String.valueOf(service.getClass().hashCode()));
-        user.setPassword(String.valueOf(service.getClass().hashCode()));
-        user.setRole(role);
+        User user = JsonParser.getInvalidUser();
         service.removeUser(user);
     }
 
@@ -72,9 +67,9 @@ public class UpdateUsersTest extends BaseTest {
         correctedForRemovingUser.setUsername(userFromService.getUsername());
         correctedForRemovingUser.setPassword(userFromService.getPassword());
         correctedForRemovingUser.setRole(userFromService.getRole());
-        Assert.assertTrue(service.removeUser(correctedForRemovingUser), "removing user " + correctedForRemovingUser);
+        Assert.assertTrue(service.removeUser(correctedForRemovingUser), "user " + correctedForRemovingUser + "was not deleted");
         LOGGER.info("get all users by " + typeService);
         users = service.getAllUsers();
-        Assert.assertFalse(users.contains(correctedForRemovingUser));
+        Assert.assertFalse(users.contains(correctedForRemovingUser), "user " + correctedForRemovingUser + " exist in the system");
     }
 }

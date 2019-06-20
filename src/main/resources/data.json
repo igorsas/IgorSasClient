@@ -1,0 +1,16 @@
+{
+  "users": {
+    "valid": {
+      "username": "igor99",
+      "password": "qwerty"
+    },
+    "invalid": {
+      "username": "?donaldTrump",
+      "password": "012-321"
+    }
+  },
+  "roles": {
+    "valid": "user",
+    "invalid": "humunkul"
+  }
+}

@@ -1,9 +1,11 @@
 package com.epam.web;
 
 import com.epam.listener.LoggerListener;
+import com.epam.utils.parser.JsonParser;
 import com.epam.web.soap.LoginModel;
 import com.epam.web.soap.Role;
 import com.epam.web.soap.ServiceException;
+import com.epam.web.soap.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -21,8 +23,9 @@ public class LogInTest extends BaseTest{
         LOGGER.info("logging in by incorrect credentials " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         LoginModel loginModel = new LoginModel();
-        loginModel.setUsername("?donaldTrump");
-        loginModel.setPassword("012-321");
+        User invalidUser = JsonParser.getInvalidUser();
+        loginModel.setUsername(invalidUser.getUsername());
+        loginModel.setPassword(invalidUser.getPassword());
         service.logIn(loginModel);
     }
 
@@ -31,8 +34,9 @@ public class LogInTest extends BaseTest{
         LOGGER.info("logging in by correct credentials " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         LoginModel loginModel = new LoginModel();
-        loginModel.setUsername("igor99");
-        loginModel.setPassword("qwerty");
+        User user = JsonParser.getValidUser();
+        loginModel.setUsername(user.getUsername());
+        loginModel.setPassword(user.getPassword());
         Assert.assertTrue(service.logIn(loginModel), "logging in");
         LOGGER.info("getting roles for current user");
         List<Role> roles = service.getRoles();
