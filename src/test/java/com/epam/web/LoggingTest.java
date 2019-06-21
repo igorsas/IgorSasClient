@@ -41,7 +41,7 @@ public class LoggingTest extends BaseTest{
         LOGGER.info("getting roles for current user");
         List<Role> roles = service.getRoles();
         LOGGER.info("roles for current user: " + roles);
-        Assert.assertFalse(roles.isEmpty(), "list of role for user isn't empty");
+        Assert.assertFalse(roles.isEmpty(), "list of role for user is empty");
     }
 
     @Test(dataProvider = "typeService")

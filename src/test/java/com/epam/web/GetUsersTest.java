@@ -22,7 +22,7 @@ public class GetUsersTest extends BaseTest {
         UserService service = ServiceFactory.getUserService(typeService);
         List<User> users = service.getAllUsers();
         LOGGER.info("users: " + users);
-        Assert.assertFalse(users.isEmpty(), "user list isn't empty");
+        Assert.assertFalse(users.isEmpty(), "user list is empty");
     }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
@@ -38,7 +38,7 @@ public class GetUsersTest extends BaseTest {
         UserService service = ServiceFactory.getUserService(typeService);
         List<User> users = service.getUsersByRole(JsonParser.getValidRole().getName());
         LOGGER.info("users: " + users);
-        Assert.assertFalse(users.isEmpty(), "user list isn't empty");
+        Assert.assertFalse(users.isEmpty(), "user list is empty");
     }
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)

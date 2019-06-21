@@ -22,12 +22,7 @@ public class UpdateUsersTest extends BaseTest {
     public void addUserWhichAlreadyExistTest(Service typeService) throws ServiceException {
         LOGGER.info("adding user which already exist test");
         UserService service = ServiceFactory.getUserService(typeService);
-        User user = new User();
-        Role role = new Role();
-        role.setName("administrator");
-        user.setUsername("igor99");
-        user.setPassword("qwerty");
-        user.setRole(role);
+        User user = JsonParser.getValidUser();
         service.addUser(user);
     }
 
