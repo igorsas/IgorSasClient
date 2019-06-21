@@ -33,11 +33,18 @@ public class GetUsersTest extends BaseTest {
     }
 
     @Test(dataProvider = "typeService")
-    public void getUsersByRole(Service typeService) throws ServiceException {
+    public void getUsersByRoleTest(Service typeService) throws ServiceException {
         LOGGER.info("get users by incorrect role " + typeService);
         UserService service = ServiceFactory.getUserService(typeService);
         List<User> users = service.getUsersByRole(JsonParser.getValidRole().getName());
         LOGGER.info("users: " + users);
         Assert.assertFalse(users.isEmpty(), "user list isn't empty");
+    }
+
+    @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
+    public void getRolesWhenUserIsNotLoggedIn(Service typeService) throws ServiceException {
+        LOGGER.info("get roles for not logged in user " + typeService);
+        UserService service = ServiceFactory.getUserService(typeService);
+        service.getRoles();
     }
 }

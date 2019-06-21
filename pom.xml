@@ -39,15 +39,6 @@
                             false
                         </org.uncommons.reportng.escape-output>
                     </systemPropertyVariables>
-
-                    <!-- Setting properties for test execution -->
-                    <properties>
-                        <!-- Setting ReportNG listeners -->
-                        <property>
-                            <name>listener</name>
-                            <value>org.uncommons.reportng.HTMLReporter</value>
-                        </property>
-                    </properties>
                 </configuration>
             </plugin>
             <plugin>
