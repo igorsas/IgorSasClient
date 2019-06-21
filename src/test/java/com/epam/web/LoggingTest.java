@@ -15,8 +15,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class LogInTest extends BaseTest{
-    private static final Logger LOGGER = LogManager.getLogger(LogInTest.class);
+public class LoggingTest extends BaseTest{
+    private static final Logger LOGGER = LogManager.getLogger(LoggingTest.class);
 
     @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
     public void incorrectLogInTest(Service typeService) throws ServiceException {
@@ -37,10 +37,24 @@ public class LogInTest extends BaseTest{
         User user = JsonParser.getValidUser();
         loginModel.setUsername(user.getUsername());
         loginModel.setPassword(user.getPassword());
-        Assert.assertTrue(service.logIn(loginModel), "logging in");
+        Assert.assertTrue(service.logIn(loginModel), "can't log in");
         LOGGER.info("getting roles for current user");
         List<Role> roles = service.getRoles();
         LOGGER.info("roles for current user: " + roles);
         Assert.assertFalse(roles.isEmpty(), "list of role for user isn't empty");
+    }
+
+    @Test(dataProvider = "typeService")
+    public void logOutTest(Service typeService) throws ServiceException {
+        LOGGER.info("logging out when one user already is in system " + typeService);
+        UserService service = ServiceFactory.getUserService(typeService);
+        Assert.assertTrue(service.logOut(), "can't log out");
+    }
+
+    @Test(dataProvider = "typeService", expectedExceptions = ServiceException.class)
+    public void logOutWhenHasNotLoggedInUsersTest(Service typeService) throws ServiceException {
+        LOGGER.info("logging out when one user already is in system " + typeService);
+        UserService service = ServiceFactory.getUserService(typeService);
+        service.logOut();
     }
 }

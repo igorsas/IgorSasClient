@@ -2,7 +2,10 @@ package com.epam.web.rest;
 
 
 import com.epam.web.factory.UserService;
-import com.epam.web.soap.*;
+import com.epam.web.soap.LoginModel;
+import com.epam.web.soap.Role;
+import com.epam.web.soap.ServiceException;
+import com.epam.web.soap.User;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import org.apache.log4j.LogManager;
@@ -128,6 +131,22 @@ public class UserRestServiceClient implements UserService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean logOut() throws ServiceException {
+        LOGGER.info("logging out by rest");
+        ClientResponse response = client
+                .resource(BASE_ADDRESS + "/logout")
+                .accept("application/json;encoding=UTF-8")
+                .type("application/json")
+                .get(ClientResponse.class);
+
+        if (response.getStatus() != 200) {
+            LOGGER.error("Can't logout. Are you logged in?");
+            throw new ServiceException("HTTP Error Code: " + response.getStatus());
+        }
+
+        return true;
     }
 
     private boolean postMethod(String url, String s) throws ServiceException {

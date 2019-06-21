@@ -30,7 +30,9 @@ public class ObjectFactory {
     private final static QName _GetAllUsers_QNAME = new QName("http://soap.web.epam.com/", "getAllUsers");
     private final static QName _GetUsersByRole_QNAME = new QName("http://soap.web.epam.com/", "getUsersByRole");
     private final static QName _AddUserResponse_QNAME = new QName("http://soap.web.epam.com/", "addUserResponse");
+    private final static QName _LogOut_QNAME = new QName("http://soap.web.epam.com/", "logOut");
     private final static QName _GetRoles_QNAME = new QName("http://soap.web.epam.com/", "getRoles");
+    private final static QName _LogOutResponse_QNAME = new QName("http://soap.web.epam.com/", "logOutResponse");
     private final static QName _GetUsersByRoleResponse_QNAME = new QName("http://soap.web.epam.com/", "getUsersByRoleResponse");
     private final static QName _RemoveUser_QNAME = new QName("http://soap.web.epam.com/", "removeUser");
     private final static QName _LogInResponse_QNAME = new QName("http://soap.web.epam.com/", "logInResponse");
@@ -46,46 +48,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Role }
-     * 
-     */
-    public Role createRole() {
-        return new Role();
-    }
-
-    /**
-     * Create an instance of {@link AddUser }
-     * 
-     */
-    public AddUser createAddUser() {
-        return new AddUser();
-    }
-
-    /**
-     * Create an instance of {@link RemoveUserResponse }
-     * 
-     */
-    public RemoveUserResponse createRemoveUserResponse() {
-        return new RemoveUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link RemoveUser }
-     * 
-     */
-    public RemoveUser createRemoveUser() {
-        return new RemoveUser();
-    }
-
-    /**
-     * Create an instance of {@link GetAllUsersResponse }
-     * 
-     */
-    public GetAllUsersResponse createGetAllUsersResponse() {
-        return new GetAllUsersResponse();
-    }
-
-    /**
      * Create an instance of {@link GetRolesResponse }
      * 
      */
@@ -94,43 +56,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link User }
+     * Create an instance of {@link LogOut }
      * 
      */
-    public User createUser() {
-        return new User();
+    public LogOut createLogOut() {
+        return new LogOut();
     }
 
     /**
-     * Create an instance of {@link LogIn }
+     * Create an instance of {@link GetAllUsersResponse }
      * 
      */
-    public LogIn createLogIn() {
-        return new LogIn();
-    }
-
-    /**
-     * Create an instance of {@link GetUsersByRoleResponse }
-     * 
-     */
-    public GetUsersByRoleResponse createGetUsersByRoleResponse() {
-        return new GetUsersByRoleResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetAllUsers }
-     * 
-     */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
-    }
-
-    /**
-     * Create an instance of {@link GetUsersByRole }
-     * 
-     */
-    public GetUsersByRole createGetUsersByRole() {
-        return new GetUsersByRole();
+    public GetAllUsersResponse createGetAllUsersResponse() {
+        return new GetAllUsersResponse();
     }
 
     /**
@@ -150,11 +88,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserFault }
+     * Create an instance of {@link GetRoles }
      * 
      */
-    public UserFault createUserFault() {
-        return new UserFault();
+    public GetRoles createGetRoles() {
+        return new GetRoles();
+    }
+
+    /**
+     * Create an instance of {@link RemoveUserResponse }
+     * 
+     */
+    public RemoveUserResponse createRemoveUserResponse() {
+        return new RemoveUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddUser }
+     * 
+     */
+    public AddUser createAddUser() {
+        return new AddUser();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
+    }
+
+    /**
+     * Create an instance of {@link RemoveUser }
+     * 
+     */
+    public RemoveUser createRemoveUser() {
+        return new RemoveUser();
+    }
+
+    /**
+     * Create an instance of {@link LogIn }
+     * 
+     */
+    public LogIn createLogIn() {
+        return new LogIn();
     }
 
     /**
@@ -166,11 +144,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetRoles }
+     * Create an instance of {@link UserFault }
      * 
      */
-    public GetRoles createGetRoles() {
-        return new GetRoles();
+    public UserFault createUserFault() {
+        return new UserFault();
+    }
+
+    /**
+     * Create an instance of {@link LogOutResponse }
+     * 
+     */
+    public LogOutResponse createLogOutResponse() {
+        return new LogOutResponse();
+    }
+
+    /**
+     * Create an instance of {@link Role }
+     * 
+     */
+    public Role createRole() {
+        return new Role();
+    }
+
+    /**
+     * Create an instance of {@link GetAllUsers }
+     * 
+     */
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
+    }
+
+    /**
+     * Create an instance of {@link GetUsersByRole }
+     * 
+     */
+    public GetUsersByRole createGetUsersByRole() {
+        return new GetUsersByRole();
+    }
+
+    /**
+     * Create an instance of {@link GetUsersByRoleResponse }
+     * 
+     */
+    public GetUsersByRoleResponse createGetUsersByRoleResponse() {
+        return new GetUsersByRoleResponse();
     }
 
     /**
@@ -228,12 +246,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogOut }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.web.epam.com/", name = "logOut")
+    public JAXBElement<LogOut> createLogOut(LogOut value) {
+        return new JAXBElement<LogOut>(_LogOut_QNAME, LogOut.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetRoles }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://soap.web.epam.com/", name = "getRoles")
     public JAXBElement<GetRoles> createGetRoles(GetRoles value) {
         return new JAXBElement<GetRoles>(_GetRoles_QNAME, GetRoles.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogOutResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.web.epam.com/", name = "logOutResponse")
+    public JAXBElement<LogOutResponse> createLogOutResponse(LogOutResponse value) {
+        return new JAXBElement<LogOutResponse>(_LogOutResponse_QNAME, LogOutResponse.class, null, value);
     }
 
     /**

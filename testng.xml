@@ -5,7 +5,7 @@
         <classes>
             <class name="com.epam.web.GetUsersTest"/>
             <class name="com.epam.web.UpdateUsersTest"/>
-            <class name="com.epam.web.LogInTest"/>
+            <class name="com.epam.web.LoggingTest"/>
         </classes>
     </test>
     <listeners>
